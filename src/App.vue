@@ -26,8 +26,8 @@ export default defineComponent({
   setup() {
     const jobs = ref<Job[]>([
       {id: '1001', title: 'Junior Developer', location: 'Yangon', salary: 200000},
-      {id: '1002', title: 'Junior Developer', location: 'Yangon', salary: 300000},
-      {id: '1003', title: 'Junior Developer', location: 'Yangon', salary: 200000},
+      {id: '1002', title: 'Junior Developer', location: 'Mandalay', salary: 300000},
+      {id: '1003', title: 'Junior Developer', location: 'MawLaMyine', salary: 200000},
       {id: '1004', title: 'Senior Empolyemer', location: 'Yangon', salary: 800000},
     ])
 
