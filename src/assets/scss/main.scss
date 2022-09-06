@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap');
+
+
+// .app {
+//     font-family: 'Noto Serif JP', serif;
+//     background-color: bisque;
+// }
+
+
+$body-color: #333;
+
+body {
+    font-family: 'Noto Serif JP', serif;
+    color: $body-color;
+    background-color: bisque;
+}
