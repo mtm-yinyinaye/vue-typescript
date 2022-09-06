@@ -4,6 +4,11 @@ $body-color: #333;
 $bg-color: bisque;
 $primary-color: #0082ffd6;
 
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
 body {
   font-family: 'Noto Serif JP', serif;
   color: $body-color;
@@ -13,6 +18,10 @@ body {
 
 .ml-20 {
     margin-left: 20px;
+}
+
+.mt-40 {
+    margin-bottom: 20px;
 }
 
 .btn {
@@ -27,3 +36,10 @@ body {
 .primary-btn {
     background-color: $primary-color;
 }
+
+.lists {
+    p {
+        margin-top: 10px;
+    }
+}
+
