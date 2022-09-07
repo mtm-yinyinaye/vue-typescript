@@ -1,10 +1,12 @@
 <template>
     <div>
-        <h3>Items</h3>
+        <h3>My Items</h3>
         <ul>
-            <li v-for="item in items" :key="item.id" @click="onItemSelected(item)">
-                {{ item.name }}
-            </li>
+            <Item 
+                v-for="item in items"
+                :key="item.id"
+                :model="item"
+                @selected="onItemSelected" />
         </ul>
     </div>
 </template>
@@ -13,8 +15,10 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 import { ItemInterface } from '@/models/items/itemsInterface'
+import Item from './children/item.vue'
 
 export default defineComponent({
+    components: { Item },
     props: {
         items: {
             type: Array as PropType<ItemInterface[]>
@@ -24,7 +28,6 @@ export default defineComponent({
     setup() {
         const onItemSelected = (item: ItemInterface) => {
             item.selected = !item.selected;
-            console.log('onItemSelect', item.id, item.selected)
         }
 
         return { onItemSelected }
@@ -33,6 +36,14 @@ export default defineComponent({
 </script>
 
 
-<style lang="sss" scoped>
+<style lang="scss">
+    ul {
+        list-style-type: none;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 0px;
+    }
 
 </style>
