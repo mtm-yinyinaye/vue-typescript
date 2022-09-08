@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, reactive } from 'vue'
+import { computed, defineComponent, onMounted } from 'vue'
 import ItemList from '@/components/items/ItemsList.vue'
 import { ItemInterface } from '@/models/items/itemsInterface'
 import store from '@/store/index'

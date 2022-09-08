@@ -1,6 +1,7 @@
 import { ItemInterface } from '@/models/items/itemsInterface'
 import { createStore } from 'vuex'
 import { ItemsStateInterface } from './ItemsStateInterface'
+import axios, { AxiosResponse } from 'axios'
 
 const state: ItemsStateInterface = {
     loading: false,
@@ -31,26 +32,16 @@ export default createStore({
         loadItems({ commit, state }) {
             commit('loadingItems')
 
-            const mockItems: ItemInterface[] = [
-                {
-                    id: 1,
-                    name: 'Item 1',
-                    selected: false
-                }, 
-                {
-                    id: 2,
-                    name: 'Item 2',
-                    selected: false
-                }, 
-                {
-                    id: 3,
-                    name: 'Item 3',
-                    selected: false
-                }
-            ]
-
             setTimeout(() => {
-                commit('loadedItems', mockItems)
+                const url = '/static/data/items.json';
+                axios
+                    .get(url)
+                    .then((response: AxiosResponse) => {
+                        commit('loadedItems', response.data as ItemInterface[])
+                    })
+                    .catch((error: any) => {
+                        console.error('ItemsApiClient: HttpClient: Get: error', error)
+                    })
             }, 1000)
         },
         selectItem({ commit }, params: { id: number, selected: boolean }) {
