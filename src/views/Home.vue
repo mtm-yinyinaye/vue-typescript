@@ -1,13 +1,17 @@
 <template>
     <div class="home">
-        <item-list :items="items" />
+        <item-list 
+        :items="items" 
+        :loading="loading"
+        @selectItem = onSelectItem />
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue'
+import { computed, defineComponent, onMounted, reactive } from 'vue'
 import ItemList from '@/components/items/ItemsList.vue'
 import { ItemInterface } from '@/models/items/itemsInterface'
+import store from '@/store/index'
 
 export default defineComponent({
     name: 'HomePage',
@@ -15,15 +19,30 @@ export default defineComponent({
         ItemList
     },
     setup() {
-        const items:ItemInterface[] = reactive([
-            {id: 1, name: "item1", selected: false},
-            {id: 2, name: "item2", selected: true},
-            {id: 3, name: "item3", selected: false},
-            {id: 4, name: "item4", selected: false},
-            {id: 5, name: "item5", selected: false},
-        ])
 
-        return { items }
+        const items = computed(() => {
+            return store.state.items
+        })
+
+        const loading = computed(() => {
+            return store.state.loading
+        })
+
+        const onSelectItem = (item: ItemInterface) => {
+            store.dispatch('selectItem', {
+                id: item.id,
+                selected: !item.selected
+            })
+        }
+
+
+
+        // mounted() 
+        onMounted(() => {
+            store.dispatch('loadItems')
+        }) 
+
+        return { items, loading, onSelectItem }
     },
 })
 </script>
