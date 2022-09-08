@@ -1,0 +1,13 @@
+[
+    {
+        "id": 1,
+        "name": "Live Item 1",
+        "selected": true
+    }, 
+    {
+        "id": 2,
+        "name": "Live Item 2",
+        "selected": false
+    }
+]
+    
